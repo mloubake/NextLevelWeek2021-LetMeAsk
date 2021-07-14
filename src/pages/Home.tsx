@@ -1,6 +1,7 @@
+import { useContext } from "react";
 import { useHistory } from "react-router-dom";
 
-import { firebase, auth } from "../services/firebase";
+import { AuthContext } from "../App";
 
 import illustration from "../assets/images/illustration.svg";
 import logo from "../assets/images/logo.svg";
@@ -12,26 +13,13 @@ import "../styles/auth.scss";
 
 export function Home() {
 	const history = useHistory();
+	const { signInWithGoogle, user } = useContext(AuthContext);
 
-	function handleCreateRoom() {
-		const provider = new firebase.auth.GoogleAuthProvider();
-
-		auth.signInWithPopup(provider)
-			.then((result) => {
-				console.log(result);
-
-				history.push("/rooms/new");
-			})
-			.catch((error) => {
-				// Handle Errors here.
-				var errorCode = error.code;
-				console.log(errorCode);
-				alert(errorCode);
-
-				var errorMessage = error.message;
-				console.log(errorMessage);
-				alert(errorMessage);
-			});
+	async function handleCreateRoom() {
+		if (!user) {
+			await signInWithGoogle();
+		}
+		history.push("/rooms/new");
 	}
 
 	return (
@@ -50,10 +38,7 @@ export function Home() {
 					</button>
 					<div className="separator">Ou entre em uma sala</div>
 					<form>
-						<input
-							type="text"
-							placeholder="Digite o código da sala"
-						/>
+						<input type="text" placeholder="Digite o código da sala" />
 						<Button type="submit">Entrar na sala</Button>
 					</form>
 				</div>
