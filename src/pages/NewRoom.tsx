@@ -1,6 +1,5 @@
 import { useState, FormEvent } from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useHistory } from "react-router-dom";
 import { UseAuth } from "../hooks/useAuth";
 
 import { database } from "../services/firebase";
@@ -11,10 +10,10 @@ import illustration from "../assets/images/illustration.svg";
 import logo from "../assets/images/logo.svg";
 
 import "../styles/auth.scss";
-import userEvent from "@testing-library/user-event";
 
 export function NewRoom() {
 	const { user } = UseAuth();
+	const history = useHistory();
 
 	const [newRoom, setNewRoom] = useState("");
 
@@ -31,6 +30,8 @@ export function NewRoom() {
 			title: newRoom,
 			authorId: user?.id,
 		});
+
+		history.push(`/rooms/${firebaseRoom.key}`);
 	}
 
 	return (
