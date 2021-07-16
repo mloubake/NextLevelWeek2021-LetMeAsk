@@ -4,6 +4,7 @@ import { UseAuth } from "../hooks/useAuth";
 
 import { Button } from "../components/Button";
 import { RoomCode } from "../components/RoomCode";
+import { Question } from "../components/Question";
 
 import { database } from "../services/firebase";
 
@@ -28,7 +29,7 @@ type FirebaseQuestions = Record<
 	}
 >;
 
-type Question = {
+type QuestionType = {
 	id: string;
 	author: {
 		name: string;
@@ -44,7 +45,7 @@ export function Room() {
 	const params = useParams<RoomParams>();
 
 	const [newQuestion, setNewQuestion] = useState("");
-	const [questions, setQuestions] = useState<Question[]>([]);
+	const [questions, setQuestions] = useState<QuestionType[]>([]);
 	const [title, setTitle] = useState("");
 
 	const roomId = params.id;
@@ -137,7 +138,17 @@ export function Room() {
 					</div>
 				</form>
 
-				{JSON.stringify(questions)}
+				<div className="question-list">
+					{questions.map((question) => {
+						return (
+							<Question
+								key={question.id}
+								content={question.content}
+								author={question.author}
+							/>
+						);
+					})}
+				</div>
 			</main>
 		</div>
 	);
