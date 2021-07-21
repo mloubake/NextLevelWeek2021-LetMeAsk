@@ -1,6 +1,5 @@
-// import { FormEvent, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
-// import { UseAuth } from "../hooks/useAuth";
+import { Link, useHistory, useParams } from "react-router-dom";
+
 import { useRoom } from "../hooks/useRoom";
 
 import { Button } from "../components/Button";
@@ -57,7 +56,9 @@ export function AdminRoom() {
 		<div id="page-room">
 			<header>
 				<div className="content">
-					<img src={logoImg} alt="LetMeAsk" />
+					<Link to="/">
+						<img src={logoImg} alt="LetMeAsk" />
+					</Link>
 					<div>
 						<RoomCode code={roomId} />
 						<Button isOutlined onClick={handleEndRoom}>
@@ -70,7 +71,11 @@ export function AdminRoom() {
 			<main>
 				<div className="room-title">
 					<h1>Sala {title}</h1>
-					{questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
+					{questions.length > 0 ? (
+						<span>{questions.length} pergunta(s)</span>
+					) : (
+						<span>Sem perguntas</span>
+					)}
 				</div>
 
 				<div className="question-list">
