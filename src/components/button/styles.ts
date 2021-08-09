@@ -1,4 +1,10 @@
-.button {
+import styled from "styled-components";
+
+type ContainerProps = {
+	backgroundColor?: string;
+};
+
+export const Container = styled.button<ContainerProps>`
 	height: 50px;
 	padding: 0 32px;
 
@@ -33,4 +39,4 @@
 		opacity: 0.6;
 		cursor: not-allowed;
 	}
-}
+`;

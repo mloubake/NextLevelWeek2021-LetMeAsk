@@ -1,17 +1,17 @@
 import { useState, FormEvent } from "react";
 import { useHistory } from "react-router-dom";
 
-import { UseAuth } from "../hooks/useAuth";
+import { UseAuth } from "../../hooks/useAuth";
 
-import { database } from "../services/firebase";
+import { database } from "../../services/firebase";
 
-import illustration from "../assets/images/illustration.svg";
-import logo from "../assets/images/logo.svg";
-import googleIcon from "../assets/images/google-icon.svg";
+import illustration from "../../assets/images/illustration.svg";
+import logo from "../../assets/images/logo.svg";
+import googleIcon from "../../assets/images/google-icon.svg";
 
-import { Button } from "../components/Button";
+import { Button } from "../../components/button";
 
-import "../styles/auth.scss";
+import { Container } from "./styles";
 
 export function Home() {
 	const history = useHistory();
@@ -48,7 +48,7 @@ export function Home() {
 	}
 
 	return (
-		<div id="page-auth">
+		<Container id="page-auth">
 			<aside>
 				<img src={illustration} alt="Illustration" />
 				<strong>Crie salas de Q&amp;A ao-vivo</strong>
@@ -73,6 +73,6 @@ export function Home() {
 					</form>
 				</div>
 			</main>
-		</div>
+		</Container>
 	);
 }

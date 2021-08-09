@@ -1,4 +1,6 @@
-#page-room {
+import styled from "styled-components";
+
+export const Container = styled.div`
 	header {
 		padding: 24px;
 
@@ -119,4 +121,30 @@
 			margin: 32px 0;
 		}
 	}
-}
+
+	.question-answer-content {
+		display: flex;
+		flex-direction: column;
+
+		.user-info {
+			.like-button-div {
+				justify-content: end;
+			}
+
+			span {
+				display: flex;
+				align-items: center;
+			}
+		}
+	}
+
+	.lightbulb {
+		width: 24px;
+		height: 24px;
+		color: #737380;
+
+		&.lightOn {
+			color: #835afd;
+		}
+	}
+`;

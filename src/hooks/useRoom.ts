@@ -10,9 +10,11 @@ type QuestionType = {
 	};
 	content: string;
 	isAnswered: boolean;
+	isAnswering: boolean;
 	isHighlighted: boolean;
 	likeCount: number;
 	likeId: string | undefined;
+	answer: string;
 };
 
 type FirebaseQuestions = Record<
@@ -24,8 +26,10 @@ type FirebaseQuestions = Record<
 		};
 		content: string;
 		isAnswered: boolean;
+		isAnswering: boolean;
 		isHighlighted: boolean;
 		likes: Record<string, { authorId: string }>;
+		answer: string;
 	}
 >;
 
@@ -49,10 +53,12 @@ export function useRoom(roomId: string) {
 						author: value.author,
 						isHighlighted: value.isHighlighted,
 						isAnswered: value.isAnswered,
+						isAnswering: value.isAnswering,
 						likeCount: Object.values(value.likes ?? {}).length,
 						likeId: Object.entries(value.likes ?? {}).find(
 							([key, like]) => like.authorId === user?.id
 						)?.[0],
+						answer: value.answer,
 					};
 				}
 			);

@@ -1,4 +1,6 @@
-#page-auth {
+import styled from "styled-components";
+
+export const Container = styled.div`
 	display: flex;
 	align-items: stretch;
 	height: 100vh;
@@ -20,8 +22,8 @@
 
 		strong {
 			margin: 16px 0 0 0;
-			
-			font: 700 36px 'Poppins', sans-serif;
+
+			font: 700 36px "Poppins", sans-serif;
 			line-height: 42px;
 		}
 
@@ -30,14 +32,14 @@
 
 			font-size: 24px;
 			line-height: 32px;
-			
-			color: #f8f8f8
+
+			color: #f8f8f8;
 		}
 	}
 
 	main {
 		padding: 0 32px;
-		
+
 		display: flex;
 		flex: 8;
 		align-items: center;
@@ -62,7 +64,7 @@
 			margin: 64px 0 24px;
 
 			font-size: 24px;
-			font-family: 'Poppins', sans-serif;
+			font-family: "Poppins", sans-serif;
 		}
 
 		form {
@@ -79,7 +81,8 @@
 				margin-top: 16px;
 			}
 
-			button, input {
+			button,
+			input {
 				width: 100%;
 			}
 		}
@@ -91,7 +94,7 @@
 			color: #737380;
 
 			a {
-				color: #e559f9
+				color: #e559f9;
 			}
 		}
 	}
@@ -138,7 +141,7 @@
 			flex: 1;
 
 			background: #a8a8b3;
-			content: '';
+			content: "";
 		}
 
 		&::after {
@@ -148,7 +151,7 @@
 			flex: 1;
 
 			background: #a8a8b3;
-			content: '';
+			content: "";
 		}
 	}
-}
+`;

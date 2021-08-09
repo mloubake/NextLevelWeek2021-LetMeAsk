@@ -1,4 +1,6 @@
-.room-code {
+import styled from "styled-components";
+
+export const Container = styled.button`
 	height: 40px;
 
 	display: flex;
@@ -30,4 +32,4 @@
 		font-size: 14px;
 		font-weight: 500;
 	}
-}
+`;

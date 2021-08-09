@@ -1,5 +1,11 @@
-.question {
+import styled from "styled-components";
+
+export const Container = styled.div`
+	width: 100%;
 	padding: 24px;
+
+	display: flex;
+	flex-direction: column;
 
 	background: #fefefe;
 	border-radius: 8px;
@@ -39,8 +45,8 @@
 		align-items: center;
 
 		img {
-			width: 32px;
-			height: 32px;
+			width: 24px;
+			height: 24px;
 
 			border-radius: 50%;
 		}
@@ -56,17 +62,24 @@
 	div {
 		display: flex;
 		gap: 16px;
+		width: 100%;
+	}
+
+	.question-button {
+		background: transparent;
 	}
 
 	button {
 		border: 0;
-		background: transparent;
+
 		cursor: pointer;
 		transition: filter 0.2s;
 
 		&.like-button {
 			display: flex;
 			align-items: flex-end;
+			justify-content: end;
+
 			color: #737380;
 			gap: 8px;
 
@@ -83,4 +96,12 @@
 			filter: brightness(0.8);
 		}
 	}
-}
+
+	footer {
+		width: 100%;
+
+		display: flex;
+		flex-direction: column;
+		align-items: end;
+	}
+`;
