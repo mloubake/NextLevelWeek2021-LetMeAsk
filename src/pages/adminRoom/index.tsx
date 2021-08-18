@@ -7,6 +7,8 @@ import { useRoom } from "../../hooks/useRoom";
 import { Button } from "../../components/button/index";
 import { RoomCode } from "../../components/roomCode/index";
 import { Question } from "../../components/question/index";
+import { Answer } from "../../components/answer";
+import QuestionHistoryBar from "../../components/questionHistoryBar";
 
 import { database } from "../../services/firebase";
 
@@ -19,7 +21,6 @@ import { Container } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLightbulb as LightBulbOff } from "@fortawesome/free-regular-svg-icons";
 import { faLightbulb as LightBulbOn } from "@fortawesome/free-solid-svg-icons";
-import { Answer } from "../../components/answer";
 
 type RoomParams = {
 	id: string;
@@ -89,101 +90,105 @@ export function AdminRoom() {
 					</div>
 				</div>
 			</header>
+			<div>
+				<main>
+					<div className="room-title">
+						<h1>Sala {title}</h1>
+						{questions.length > 0 ? (
+							<span>{questions.length} pergunta(s)</span>
+						) : (
+							<span>Sem perguntas</span>
+						)}
+					</div>
 
-			<main>
-				<div className="room-title">
-					<h1>Sala {title}</h1>
-					{questions.length > 0 ? (
-						<span>{questions.length} pergunta(s)</span>
-					) : (
-						<span>Sem perguntas</span>
-					)}
-				</div>
-
-				<div className="question-list" style={{ width: "100%" }}>
-					{questions.map((question) => {
-						return (
-							<Question
-								key={question.id}
-								content={question.content}
-								isAnswered={question.isAnswered}
-								isHighlighted={question.isHighlighted}
-							>
-								<div className={"question-answer-content"}>
-									<div className="user-info">
-										<div>
-											<img
-												src={question.author.avatar}
-												alt={question.author.name}
-											/>
-											<span>{question.author.name}</span>
-										</div>
-										{!question.isAnswered && (
-											<>
-												<div className="admin-control-button-div">
-													<button
-														className="question-button"
-														type="button"
-														onClick={() =>
-															handleMarkQuestionAsAnswered(question.id)
-														}
-													>
-														<img
-															src={checkImg}
-															alt="Marcar pergunta como respondida"
-														/>
-													</button>
-													<button
-														className="question-button"
-														type="button"
-														onClick={() =>
-															handleAnsweringQuestion(
-																question.id,
-																question.isAnswering
-															)
-														}
-													>
-														<img src={answerImg} alt="Responder pergunta" />
-													</button>
-													<button
-														className="question-button"
-														type="button"
-														onClick={() => handleHighlightQuestion(question.id)}
-													>
-														<FontAwesomeIcon
-															icon={
-																question.isHighlighted
-																	? LightBulbOn
-																	: LightBulbOff
+					<div className="question-list" style={{ width: "100%" }}>
+						{questions.map((question) => {
+							return (
+								<Question
+									key={question.id}
+									content={question.content}
+									isAnswered={question.isAnswered}
+									isHighlighted={question.isHighlighted}
+								>
+									<div className={"question-answer-content"}>
+										<div className="user-info">
+											<div>
+												<img
+													src={question.author.avatar}
+													alt={question.author.name}
+												/>
+												<span>{question.author.name}</span>
+											</div>
+											{!question.isAnswered && (
+												<>
+													<div className="admin-control-button-div">
+														<button
+															className="question-button"
+															type="button"
+															onClick={() =>
+																handleMarkQuestionAsAnswered(question.id)
 															}
-															className={cn("lightbulb", {
-																lightOn: question.isHighlighted,
-															})}
-														/>
-													</button>
-													<button
-														className="question-button"
-														type="button"
-														onClick={() => handleDeleteQuestion(question.id)}
-													>
-														<img src={deleteImg} alt="Remover pergunta" />
-													</button>
-												</div>
-											</>
-										)}
+														>
+															<img
+																src={checkImg}
+																alt="Marcar pergunta como respondida"
+															/>
+														</button>
+														<button
+															className="question-button"
+															type="button"
+															onClick={() =>
+																handleAnsweringQuestion(
+																	question.id,
+																	question.isAnswering
+																)
+															}
+														>
+															<img src={answerImg} alt="Responder pergunta" />
+														</button>
+														<button
+															className="question-button"
+															type="button"
+															onClick={() =>
+																handleHighlightQuestion(question.id)
+															}
+														>
+															<FontAwesomeIcon
+																icon={
+																	question.isHighlighted
+																		? LightBulbOn
+																		: LightBulbOff
+																}
+																className={cn("lightbulb", {
+																	lightOn: question.isHighlighted,
+																})}
+															/>
+														</button>
+														<button
+															className="question-button"
+															type="button"
+															onClick={() => handleDeleteQuestion(question.id)}
+														>
+															<img src={deleteImg} alt="Remover pergunta" />
+														</button>
+													</div>
+												</>
+											)}
+										</div>
+										<Answer
+											isAnswering={question.isAnswering}
+											isAnswered={question.isAnswered}
+											questionId={question.id}
+											answerContent={question.answer}
+										/>
 									</div>
-									<Answer
-										isAnswering={question.isAnswering}
-										isAnswered={question.isAnswered}
-										questionId={question.id}
-										answerContent={question.answer}
-									/>
-								</div>
-							</Question>
-						);
-					})}
-				</div>
-			</main>
+								</Question>
+							);
+						})}
+					</div>
+				</main>
+				<QuestionHistoryBar />
+			</div>
 		</Container>
 	);
 }
