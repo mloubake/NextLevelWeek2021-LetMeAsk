@@ -35,7 +35,7 @@ export const Container = styled.div`
 		border: 3px solid #835afc;
 		border-radius: 50%;
 		cursor: pointer;
-		transition: transform 0.5s ease-out;
+		transition: transform 0.4s ease-out;
 		transform: rotateZ(0deg);
 
 		&.open {
