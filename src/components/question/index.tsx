@@ -27,9 +27,13 @@ export const Question = React.forwardRef(
 				)}
 			>
 				<p>{content}</p>
-				<footer>
-					<div>{children}</div>
-				</footer>
+				{children ? (
+					<footer>
+						<div>{children}</div>
+					</footer>
+				) : (
+					""
+				)}
 			</Container>
 		);
 	}
