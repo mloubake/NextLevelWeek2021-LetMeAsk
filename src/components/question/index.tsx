@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import cn from "classnames";
 
 import { Container } from "./styles";
@@ -9,26 +9,28 @@ type QuestionProps = {
 	isAnswered?: boolean;
 	isAnswering?: boolean;
 	isHighlighted?: boolean;
+	ref?: any;
 };
 
-export function Question({
-	content,
-	isAnswered,
-	isHighlighted,
-	children,
-}: QuestionProps) {
-	return (
-		<Container
-			className={cn(
-				"question",
-				{ answered: isAnswered },
-				{ highlighted: isHighlighted }
-			)}
-		>
-			<p>{content}</p>
-			<footer>
-				<div>{children}</div>
-			</footer>
-		</Container>
-	);
-}
+export const Question = React.forwardRef(
+	(
+		{ content, isAnswered, isHighlighted, children }: QuestionProps,
+		ref: any
+	) => {
+		return (
+			<Container
+				ref={ref}
+				className={cn(
+					"question",
+					{ answered: isAnswered },
+					{ highlighted: isHighlighted }
+				)}
+			>
+				<p>{content}</p>
+				<footer>
+					<div>{children}</div>
+				</footer>
+			</Container>
+		);
+	}
+);

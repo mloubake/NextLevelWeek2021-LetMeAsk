@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import cn from "classnames";
 
@@ -38,6 +38,9 @@ export function AdminRoom() {
 
 	const { title, questions } = useRoom(roomId);
 
+	const [questionIndex, setQuestionIndex] = useState();
+	const questionRef: any = useRef<any>([]);
+
 	async function handleEndRoom() {
 		await database.ref(`rooms/${roomId}`).update({ endedAt: new Date() });
 
@@ -75,6 +78,18 @@ export function AdminRoom() {
 		}
 	}
 
+	function executeScrollToQuestion(questionIndex: any) {
+		if (questionRef.current) {
+			questionRef.current[questionIndex].scrollIntoView({
+				block: "center",
+				inline: "center",
+				behavior: "smooth",
+			});
+		}
+
+		setQuestionIndex(questionIndex);
+	}
+
 	return (
 		<Container id="page-room">
 			<header>
@@ -102,13 +117,21 @@ export function AdminRoom() {
 					</div>
 
 					<div className="question-list" style={{ width: "100%" }}>
-						{questions.map((question) => {
+						{questions.map((question, index) => {
 							return (
 								<Question
 									key={question.id}
 									content={question.content}
 									isAnswered={question.isAnswered}
 									isHighlighted={question.isHighlighted}
+									//Resolver esse problema de type
+
+									ref={(element: HTMLDivElement) => {
+										questionRef.current[index] = element;
+										console.log("+++++");
+										console.log(element);
+										console.log("+++++");
+									}}
 								>
 									<div className={"question-answer-content"}>
 										<div className="user-info">
@@ -187,7 +210,7 @@ export function AdminRoom() {
 						})}
 					</div>
 				</main>
-				<QuestionHistoryBar />
+				<QuestionHistoryBar executeScrollToQuestion={executeScrollToQuestion} />
 			</div>
 		</Container>
 	);

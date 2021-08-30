@@ -19,12 +19,11 @@ type RoomParams = {
 
 export function Room() {
 	const { user } = UseAuth();
-	const params = useParams<RoomParams>();
 
 	const [newQuestion, setNewQuestion] = useState("");
 
+	const params = useParams<RoomParams>();
 	const roomId = params.id;
-
 	const { title, questions } = useRoom(roomId);
 
 	async function handleSendQuestion(event: FormEvent) {
@@ -110,7 +109,7 @@ export function Room() {
 				</form>
 
 				<div className="question-list">
-					{questions.map((question) => {
+					{questions.map((question, index) => {
 						return (
 							<Question
 								key={question.id}
@@ -118,6 +117,7 @@ export function Room() {
 								isAnswered={question.isAnswered}
 								isAnswering={question.isAnswering}
 								isHighlighted={question.isHighlighted}
+								// ref={(element) => (questionsRefs.current[index] = element)}
 							>
 								<div className={"question-answer-content"}>
 									<div className="user-info">
