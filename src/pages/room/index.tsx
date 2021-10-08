@@ -9,6 +9,8 @@ import { Button } from "../../components/button/index";
 import { RoomCode } from "../../components/roomCode/index";
 import { Question } from "../../components/question/index";
 import { Answer } from "../../components/answer";
+import { ThemeSwitcher } from "../../components/themeSwitcher";
+import LogoImage from "../../components/logoImage/index";
 
 import logoImg from "../../assets/images/logo.svg";
 import { Container } from "./styles";
@@ -73,9 +75,12 @@ export function Room() {
 			<header>
 				<div className="content">
 					<Link to="/">
-						<img src={logoImg} alt="LetMeAsk" />
+						<LogoImage />
 					</Link>
-					<RoomCode code={roomId} />
+					<div>
+						<RoomCode code={roomId} />
+						<ThemeSwitcher />
+					</div>
 				</div>
 			</header>
 

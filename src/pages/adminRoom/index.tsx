@@ -8,7 +8,9 @@ import { Button } from "../../components/button/index";
 import { RoomCode } from "../../components/roomCode/index";
 import { Question } from "../../components/question/index";
 import { Answer } from "../../components/answer";
+import { ThemeSwitcher } from "../../components/themeSwitcher/index";
 import QuestionHistoryBar from "../../components/questionHistoryBar";
+import LogoImage from "../../components/logoImage/index";
 
 import { database } from "../../services/firebase";
 
@@ -95,13 +97,14 @@ export function AdminRoom() {
 			<header>
 				<div className="content">
 					<Link to="/">
-						<img src={logoImg} alt="LetMeAsk" />
+						<LogoImage />
 					</Link>
 					<div>
 						<RoomCode code={roomId} />
 						<Button isOutlined={true} onClick={handleEndRoom}>
 							Encerrar sala
 						</Button>
+						<ThemeSwitcher />
 					</div>
 				</div>
 			</header>
@@ -124,13 +127,8 @@ export function AdminRoom() {
 									content={question.content}
 									isAnswered={question.isAnswered}
 									isHighlighted={question.isHighlighted}
-									//Resolver esse problema de type
-
 									ref={(element: HTMLDivElement) => {
 										questionRef.current[index] = element;
-										console.log("+++++");
-										console.log(element);
-										console.log("+++++");
 									}}
 								>
 									<div className={"question-answer-content"}>

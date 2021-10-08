@@ -13,7 +13,7 @@ export const Container = styled.div`
 		flex-direction: column;
 		justify-content: center;
 
-		background: #8351fd;
+		background: ${(props) => props.theme.colors.homePosterBackground};
 		color: #fff;
 
 		img {
@@ -37,6 +37,15 @@ export const Container = styled.div`
 		}
 	}
 
+	.themeSwitcherContent {
+		width: 100%;
+		padding: 32px;
+
+		position: absolute;
+		display: flex;
+		justify-content: end;
+	}
+
 	main {
 		padding: 0 32px;
 
@@ -44,6 +53,15 @@ export const Container = styled.div`
 		flex: 8;
 		align-items: center;
 		justify-content: center;
+
+		div {
+			.SVGImage {
+				width: 100%;
+				.LogoImage {
+					fill: ${(props) => props.theme.colors.letMeAskLogoText};
+				}
+			}
+		}
 	}
 
 	.main-content {
@@ -55,6 +73,7 @@ export const Container = styled.div`
 		align-items: stretch;
 
 		text-align: center;
+		color: ${(props) => props.theme.colors.roomTitle};
 
 		> img {
 			align-self: center;
@@ -72,9 +91,10 @@ export const Container = styled.div`
 				height: 50px;
 				padding: 0 16px;
 
-				border: 1px solid #a8a8b3;
+				border: 1px solid ${(props) => props.theme.colors.textareaBorder};
 				border-radius: 8px;
-				background: #fff;
+				background: ${(props) => props.theme.colors.textareaBackground};
+				color: ${(props) => props.theme.colors.textareaColor};
 			}
 
 			button {

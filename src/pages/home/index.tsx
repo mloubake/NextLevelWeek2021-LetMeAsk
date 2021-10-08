@@ -5,11 +5,12 @@ import { UseAuth } from "../../hooks/useAuth";
 
 import { database } from "../../services/firebase";
 
-import illustration from "../../assets/images/illustration.svg";
-import logo from "../../assets/images/logo.svg";
-import googleIcon from "../../assets/images/google-icon.svg";
-
 import { Button } from "../../components/button";
+import LogoImage from "../../components/logoImage";
+import { ThemeSwitcher } from "../../components/themeSwitcher";
+
+import illustration from "../../assets/images/illustration.svg";
+import googleIcon from "../../assets/images/google-icon.svg";
 
 import { Container } from "./styles";
 
@@ -54,9 +55,13 @@ export function Home() {
 				<strong>Crie salas de Q&amp;A ao-vivo</strong>
 				<p>Tire as dúvidas da sua audiência em tempo-real</p>
 			</aside>
+
+			<div className="themeSwitcherContent">
+				<ThemeSwitcher />
+			</div>
 			<main>
 				<div className="main-content">
-					<img src={logo} alt="LetMeAsk" />
+					<LogoImage />
 					<button className="create-room" onClick={handleCreateRoom}>
 						<img src={googleIcon} alt="GoogleIcon" />
 						Crie a sua sala com o Google

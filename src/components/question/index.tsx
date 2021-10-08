@@ -9,7 +9,6 @@ type QuestionProps = {
 	isAnswered?: boolean;
 	isAnswering?: boolean;
 	isHighlighted?: boolean;
-	ref?: any;
 };
 
 export const Question = React.forwardRef(

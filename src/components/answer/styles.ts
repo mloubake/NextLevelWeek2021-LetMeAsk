@@ -2,16 +2,16 @@ import styled from "styled-components";
 
 export const Container = styled.div`
 	.answer {
-		margin-top: "20px";
+		margin-top: 20px;
 
 		display: flex;
 		flex-direction: column;
 		align-items: end;
 
-		border-top: "1px solid #c1c1c1";
+		border-top: 1px solid red;
 
 		> button {
-			background: #86a0f2;
+			background: red;
 		}
 	}
 
@@ -25,7 +25,7 @@ export const Container = styled.div`
 			padding: 10px;
 			margin-top: 20px;
 
-			background: #f0f;
+			background: ${(props) => props.theme.colors.questionAnswerBackground};
 			border: 1px solid red;
 			border-radius: 50%;
 		}

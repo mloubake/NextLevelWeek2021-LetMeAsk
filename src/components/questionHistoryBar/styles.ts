@@ -11,9 +11,9 @@ export const Container = styled.div`
 	top: 0;
 	right: -20vw;
 
-	border: 6px solid #835afc;
+	border: 6px solid ${(props) => props.theme.colors.roomCodeBorder};
 	border-radius: 8px;
-	background: #f8f8f8;
+	background: ${(props) => props.theme.colors.questionBackground};
 	transition: transform 0.3s ease-out;
 
 	&.open {
@@ -32,7 +32,11 @@ export const Container = styled.div`
 		top: 50%;
 		right: 20vw;
 
-		border: 3px solid #835afc;
+		background: ${(props) =>
+			props.theme.colors.historyBarToogleButtonBackground};
+		border: 3px solid
+			${(props) => props.theme.colors.historyBarToogleButtonBorder};
+		color: ${(props) => props.theme.colors.historyBarToogleButtonBorder};
 		border-radius: 50%;
 		cursor: pointer;
 		transition: transform 0.4s ease-out;
@@ -50,7 +54,7 @@ export const Container = styled.div`
 		flex-direction: column;
 
 		overflow-y: auto;
-		background: #f8f8f8;
+		background: ${(props) => props.theme.colors.roomBackground};
 
 		button {
 			margin: 1vh;

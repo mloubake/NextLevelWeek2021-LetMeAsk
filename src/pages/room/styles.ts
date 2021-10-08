@@ -4,7 +4,8 @@ export const Container = styled.div`
 	header {
 		padding: 24px;
 
-		border-bottom: 1px solid #e2e2e2;
+		border-bottom: 1px solid
+			${(props) => props.theme.colors.roomHeaderBottomBorder};
 
 		.content {
 			max-width: 1024px;
@@ -28,6 +29,17 @@ export const Container = styled.div`
 					height: 40px;
 				}
 			}
+
+			.themeSwitcher {
+				transform: translateX(10vw);
+			}
+		}
+
+		.SVGImage {
+			max-height: 45px;
+			.LogoImage {
+				fill: ${(props) => props.theme.colors.letMeAskLogoText};
+			}
 		}
 	}
 
@@ -44,16 +56,16 @@ export const Container = styled.div`
 			h1 {
 				font-family: "Poppins", sans-serif;
 				font-size: 24px;
-				color: #29292e;
+				color: ${(props) => props.theme.colors.roomTitle};
 			}
 
 			span {
 				margin-left: 16px;
 				padding: 8px 16px;
 
-				background: #e559f9;
+				background: ${(props) => props.theme.colors.questionCounterBackground};
 				border-radius: 25px;
-				color: #fff;
+				color: ${(props) => props.theme.colors.questionCounterText};
 				font-weight: 500;
 				font-size: 14px;
 			}
@@ -67,7 +79,8 @@ export const Container = styled.div`
 
 				border: 0;
 				border-radius: 8px;
-				background: #fefefe;
+				background: ${(props) => props.theme.colors.textareaBackground};
+				color: ${(props) => props.theme.colors.textareaColor};
 				box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 				resize: vertical;
 			}
@@ -93,7 +106,7 @@ export const Container = styled.div`
 					> span {
 						margin-left: 8px;
 
-						color: #29292e;
+						color: ${(props) => props.theme.colors.questionBoldText};
 						font-weight: 500;
 						font-size: 14px;
 					}

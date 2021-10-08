@@ -13,8 +13,8 @@ export const Container = styled.div`
 		flex-direction: column;
 		justify-content: center;
 
-		background: #8351fd;
-		color: #fff;
+		background: ${(props) => props.theme.colors.homePosterBackground};
+		color: ${(props) => props.theme.colors.homePosterText};
 
 		img {
 			max-width: 320px;
@@ -33,8 +33,16 @@ export const Container = styled.div`
 			font-size: 24px;
 			line-height: 32px;
 
-			color: #f8f8f8;
+			color: ${(props) => props.theme.colors.homePosterText};
 		}
+	}
+	.themeSwitcherContent {
+		width: 100%;
+		padding: 32px;
+
+		position: absolute;
+		display: flex;
+		justify-content: end;
 	}
 
 	main {
@@ -44,6 +52,15 @@ export const Container = styled.div`
 		flex: 8;
 		align-items: center;
 		justify-content: center;
+
+		div {
+			.SVGImage {
+				width: 100%;
+				.LogoImage {
+					fill: ${(props) => props.theme.colors.letMeAskLogoText};
+				}
+			}
+		}
 	}
 
 	.main-content {
@@ -72,9 +89,11 @@ export const Container = styled.div`
 				height: 50px;
 				padding: 0 16px;
 
-				border: 1px solid #a8a8b3;
+				border: 1px solid ${(props) => props.theme.colors.textareaBorder};
 				border-radius: 8px;
-				background: #fff;
+				background: ${(props) => props.theme.colors.textareaBackground};
+
+				color: ${(props) => props.theme.colors.textareaColor};
 			}
 
 			button {
@@ -132,7 +151,7 @@ export const Container = styled.div`
 		align-items: center;
 
 		font-size: 14px;
-		color: #a8a8b3;
+		color: ${(props) => props.theme.colors.separator};
 
 		&::before {
 			height: 1px;
@@ -140,7 +159,7 @@ export const Container = styled.div`
 
 			flex: 1;
 
-			background: #a8a8b3;
+			background: ${(props) => props.theme.colors.separator};
 			content: "";
 		}
 
@@ -150,7 +169,7 @@ export const Container = styled.div`
 
 			flex: 1;
 
-			background: #a8a8b3;
+			background: ${(props) => props.theme.colors.separator};
 			content: "";
 		}
 	}

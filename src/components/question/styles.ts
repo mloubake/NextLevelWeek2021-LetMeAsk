@@ -7,7 +7,7 @@ export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 
-	background: #fefefe;
+	background: ${(props) => props.theme.colors.questionBackground};
 	border-radius: 8px;
 	box-shadow: 0 12px 12px rgba(0, 0, 0, 0.04);
 
@@ -16,20 +16,20 @@ export const Container = styled.div`
 	}
 
 	&.highlighted {
-		background: #f4f0ff;
-		border: 3px solid #835afd;
+		background: ${(props) => props.theme.colors.questionHighlightedBackground};
+		border: 3px solid ${(props) => props.theme.colors.questionHighlightedBorder};
 
 		footer .user-info span {
-			color: #29292e;
+			color: ${(props) => props.theme.colors.questionBolderText};
 		}
 	}
 
 	&.answered {
-		background: #dbdcdd;
+		background: ${(props) => props.theme.colors.questionAnswerBackground};
 	}
 
 	p {
-		color: #29292e;
+		color: ${(props) => props.theme.colors.questionBolderText};
 	}
 
 	footer {
@@ -54,15 +54,18 @@ export const Container = styled.div`
 		span {
 			margin-left: 8px;
 
-			color: #737380;
+			color: ${(props) => props.theme.colors.questionBoldText};
 			font-size: 14px;
 		}
 	}
 
 	div {
+		width: 100%;
+
 		display: flex;
 		gap: 16px;
-		width: 100%;
+
+		color: ${(props) => props.theme.colors.questionBolderText};
 	}
 
 	.question-button {
@@ -80,14 +83,14 @@ export const Container = styled.div`
 			align-items: flex-end;
 			justify-content: end;
 
-			color: #737380;
+			color: ${(props) => props.theme.colors.questionIcon};
 			gap: 8px;
 
 			&.liked {
-				color: #835afd;
+				color: ${(props) => props.theme.colors.questionIconHighlighted};
 
 				svg path {
-					stroke: #835afd;
+					stroke: ${(props) => props.theme.colors.questionIconHighlighted};
 				}
 			}
 		}

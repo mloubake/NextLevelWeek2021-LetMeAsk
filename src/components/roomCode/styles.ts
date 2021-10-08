@@ -7,8 +7,9 @@ export const Container = styled.button`
 
 	border-radius: 8px;
 	overflow: hidden;
-	background: #fff;
-	border: 1px solid #835afd;
+	background: ${(props) => props.theme.colors.roomCodeBackground};
+	color: ${(props) => props.theme.colors.roomCodeText};
+	border: 1px solid ${(props) => props.theme.colors.roomCodeBorder};
 	cursor: pointer;
 
 	div {
@@ -18,7 +19,7 @@ export const Container = styled.button`
 		justify-content: center;
 		align-items: center;
 
-		background: #835afd;
+		background: ${(props) => props.theme.colors.roomCodeIconBackground};
 	}
 
 	span {
